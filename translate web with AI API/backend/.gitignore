@@ -1,0 +1,33 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Build / Dist (nếu có)
+dist/
+build/
+
+# SQLite / database files (nếu dùng)
+*.sqlite
+*.db
+
+# Coverage
+coverage/
+
+# Temporary
+tmp/
