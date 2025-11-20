@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI English Learning - Unified</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎓 AI English Learning Platform</h1>
+      <p>Cải thiện khả năng giao tiếp tiếng Anh — Offline + Backend History</p>
+    </div>
+
+    <div class="main-content">
+      <!-- Left: chat sessions history -->
+      <div class="history-sidebar">
+        <button class="new-chat-btn" id="newChatBtn">➕ New Chat</button>
+        <div class="history-header">📚 Chat History</div>
+        <div id="chatHistoryList"></div>
+      </div>
+
+      <!-- Middle: chat -->
+      <div class="chat-section">
+        <div class="chat-box" id="chatBox">
+          <div class="message ai-message">👋 Hello! I'm your AI English tutor. Let's practice English together!</div>
+        </div>
+
+        <div class="loading" id="loading"><div>⏳ Đang xử lý...</div></div>
+
+        <div class="input-section">
+          <div class="input-wrapper">
+            <input id="userInput" type="text" placeholder="Type your message or click the microphone to speak..." onkeypress="handleKeyPress(event)" />
+            <button class="voice-btn" id="voiceBtn">🎤</button>
+          </div>
+          <button class="btn btn-primary" id="sendBtn">Send 📤</button>
+        </div>
+
+        <div style="margin-top:10px;">
+          <span class="status-badge status-online" id="statusBadge">🟢 Ready</span>
+          <span class="status-badge" id="apiStatus" style="margin-left:10px;">Backend: Checking...</span>
+        </div>
+      </div>
+
+      <!-- Right: settings & dictionary -->
+      <div class="sidebar">
+        <div class="card">
+          <h3>⚙️ Cài Đặt</h3>
+          <div class="api-config">
+            <label>Backend URL:</label>
+            <input id="backendUrl" type="text" value="http://localhost:3000" />
+            <small>URL của backend server</small>
+          </div>
+          <div class="api-config">
+            <label for="apiKey">OpenAI API Key (optional):</label>
+            <input id="apiKey" type="password" placeholder="sk-..." />
+            <small>Để trống sẽ dùng demo mode</small>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>📖 Tra Từ Nhanh</h3>
+          <input id="dictInput" class="dictionary-input" type="text" placeholder="Nhập từ cần tra..." onkeypress="handleDictKeyPress(event)" />
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <button class="btn btn-secondary" style="flex:1;" id="lookupBtn">🔍 Tra Từ</button>
+            <button class="btn btn-secondary" style="width:120px;" id="toggleHistBtn">📚 Lịch Sử</button>
+          </div>
+          <div class="dictionary-result" id="dictResult"></div>
+          <div id="historyBox" class="history-box" style="display:none;"></div>
+        </div>
+
+        <div class="card">
+          <h3>📊 Thống Kê</h3>
+          <div id="stats">
+            <p>💬 Tổng chat: <strong id="totalChats">0</strong></p>
+            <p>📝 Tổng tin nhắn: <strong id="totalMessages">0</strong></p>
+            <p>📚 Từ đã học: <strong id="totalVocab">0</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
